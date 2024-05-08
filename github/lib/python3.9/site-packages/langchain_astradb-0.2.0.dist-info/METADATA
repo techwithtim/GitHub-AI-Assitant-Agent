@@ -1,0 +1,123 @@
+Metadata-Version: 2.1
+Name: langchain-astradb
+Version: 0.2.0
+Summary: An integration package connecting Astra DB and LangChain
+Home-page: https://github.com/langchain-ai/langchain-datastax
+License: MIT
+Requires-Python: >=3.8.1,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: astrapy (>=1,<2)
+Requires-Dist: langchain-core (>=0.1.31,<0.2.0)
+Requires-Dist: numpy (>=1,<2)
+Project-URL: Repository, https://github.com/langchain-ai/langchain-datastax
+Project-URL: Source Code, https://github.com/langchain-ai/langchain-datastax/tree/main/libs/astradb
+Description-Content-Type: text/markdown
+
+# langchain-astradb
+
+This package contains the LangChain integrations for using DataStax Astra DB.
+
+> DataStax [Astra DB](https://docs.datastax.com/en/astra/home/astra.html) is a serverless vector-capable database built on Apache Cassandra® and made conveniently available
+> through an easy-to-use JSON API.
+
+## Installation and Setup
+
+Installation of this partner package:
+
+```bash
+pip install langchain-astradb
+```
+
+## Integrations overview
+
+See the [LangChain docs page](https://python.langchain.com/docs/integrations/providers/astradb) and the [API reference](https://api.python.langchain.com/en/latest/astradb_api_reference.html) for more details.
+
+### Vector Store
+
+```python
+from langchain_astradb import AstraDBVectorStore
+
+my_store = AstraDBVectorStore(
+  embedding=my_embedding,
+  collection_name="my_store",
+  api_endpoint="https://...",
+  token="AstraCS:...",
+)
+```
+
+### Chat message history
+
+```python
+from langchain_astradb import AstraDBChatMessageHistory
+
+message_history = AstraDBChatMessageHistory(
+    session_id="test-session",
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
+## LLM Cache
+
+```python
+from langchain_astradb import AstraDBCache
+
+cache = AstraDBCache(
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
+## Semantic LLM Cache
+
+```python
+from langchain_astradb import AstraDBSemanticCache
+
+cache = AstraDBSemanticCache(
+    embedding=my_embedding,
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
+## Document loader
+
+```python
+from langchain_astradb import AstraDBLoader
+
+loader = AstraDBLoader(
+    collection_name="my_collection",
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
+### Store
+
+```python
+from langchain_astradb import AstraDBStore
+
+store = AstraDBStore(
+    collection_name="my_kv_store",
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
+### Byte Store
+
+```python
+from langchain_astradb import AstraDBByteStore
+
+store = AstraDBByteStore(
+    collection_name="my_kv_store",
+    api_endpoint="https://...",
+    token="AstraCS:...",
+)
+```
+
